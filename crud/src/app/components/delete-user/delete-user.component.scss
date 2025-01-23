@@ -1,0 +1,41 @@
+.mat-delete-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 20vh;
+  width: 45vw;
+  padding: 30px;
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .mat-button-actions {
+    width: 45vw;
+    height: 6vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    .dellButt {
+      color: white;
+      background-color: #279df4;
+    }
+
+    .canButt {
+      background-color: white;
+      color: #279df4;
+    }
+
+    button {
+      width: 20%;
+      height: 100%;
+      margin-right: 5%;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 25px;
+      border: 2px solid #279df4;
+    }
+  }
+}

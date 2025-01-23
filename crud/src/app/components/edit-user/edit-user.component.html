@@ -1,0 +1,95 @@
+<div class="mat-create-list">
+  <div class="mat-create-title">
+    <h1>Create user</h1>
+  </div>
+  <div class="mat-create-content">
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input
+        matInput
+        maxlength="100"
+        [formControl]="firstNameControl"
+        (input)="onFirstNameChange()"
+      />
+      <mat-hint align="end">{{ firstName.length }}/100</mat-hint>
+      <mat-error *ngIf="firstNameControl.hasError('required')">
+        Ім'я обов'язкове для введення
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last name</mat-label>
+      <input
+        matInput
+        maxlength="100"
+        [formControl]="lastNameControl"
+        (input)="onLastNameChange()"
+      />
+      <mat-hint align="end">{{ lastName.length }}/100</mat-hint>
+      <mat-error *ngIf="lastNameControl.hasError('required')">
+        Прізвище обов'язкове для введення
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        [formControl]="email"
+        (blur)="updateErrorMessage()"
+        (input)="currentLength.email = email.value?.length || 0"
+        maxlength="100"
+        required
+      />
+      <mat-hint align="end">{{ currentLength.email }}/100</mat-hint>
+      <mat-error *ngIf="email.invalid">{{ errorMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-chip-list" appearance="outline">
+      <mat-label>Tags</mat-label>
+      <mat-chip-grid #chipGrid aria-label="Enter tags">
+        @for (tag of tags(); track tag) {
+        <mat-chip-row
+          (removed)="remove(tag)"
+          [editable]="true"
+          (edited)="edit(tag, $event)"
+          [aria-description]="'press enter to edit ' + tag.name"
+        >
+          {{ tag.name }}
+          <button matChipRemove [attr.aria-label]="'remove ' + tag.name">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        }
+        <input
+          placeholder="New tag..."
+          [matChipInputFor]="chipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event)"
+        />
+      </mat-chip-grid>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        maxlength="1000"
+        [formControl]="descriptionControl"
+        (input)="onDescriptionChange()"
+        style="height: 200px; overflow-y: auto"
+      ></textarea>
+      <mat-hint align="end">{{ description.length }}/1000</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="mat-create-actions">
+    <button mat-raised-button class="closButt" (click)="closeDialog()">
+      Сancel
+    </button>
+    <button mat-raised-button class="saveButt" (click)="saveChanges()">
+      Save changes
+    </button>
+  </div>
+</div>

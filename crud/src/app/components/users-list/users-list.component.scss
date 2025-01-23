@@ -1,0 +1,38 @@
+.mat-all-users {
+  width: 100%;
+  border-radius: 30px;
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  border: 1px solid #d3e5ff;
+
+  .title-criterion {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr 2.5fr 4fr 1fr;
+    background-color: #d3e5ff;
+    align-items: center;
+    box-sizing: border-box;
+    height: 70px;
+    font-weight: bold;
+    font-size: 20px;
+
+    .position {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  .mat-actions-users {
+    display: flex;
+    justify-content: flex-end;
+
+    mat-paginator .mat-mdc-paginator-navigation button {
+      border-radius: 10px;
+      font-size: 30px;
+
+      height: 50px;
+      width: 50px;
+    }
+  }
+}

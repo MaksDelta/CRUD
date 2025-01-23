@@ -1,0 +1,15 @@
+<div class="mat-delete-list">
+  <h2>
+    Are you sure you want to delete user
+    <span class="user-name">{{ user.firstName }} {{ user.lastName }}</span
+    >?
+  </h2>
+  <div class="mat-button-actions">
+    <button mat-raised-button class="canButt" (click)="onCancel()">
+      Cancel
+    </button>
+    <button mat-raised-button class="dellButt" (click)="onDelete()">
+      Delete
+    </button>
+  </div>
+</div>
