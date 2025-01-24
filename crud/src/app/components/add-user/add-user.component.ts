@@ -25,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserService, User } from '../../services/user.service';
+import { CommonModule } from '@angular/common';
 
 interface Tag {
   name: string;
@@ -40,6 +41,7 @@ interface Tag {
     MatChipsModule,
     MatIconModule,
     MatSelectModule,
+    CommonModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './add-user.component.html',

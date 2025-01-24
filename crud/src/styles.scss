@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.custom-dialog .mat-dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+body {
+  font-family: 'Domine', serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Domine', serif;
+  font-weight: 700;
+}
+
+p,
+span,
+div {
+  font-family: 'Domine', serif;
+  font-weight: 400;
+}

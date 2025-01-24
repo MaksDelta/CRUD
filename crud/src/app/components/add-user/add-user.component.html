@@ -15,7 +15,7 @@
       />
       <mat-hint align="end">{{ firstName.length }}/100</mat-hint>
       <mat-error *ngIf="firstNameControl.hasError('required')">
-        Ім'я обов'язкове для введення
+        You must enter a value
       </mat-error>
     </mat-form-field>
 
@@ -31,7 +31,7 @@
       />
       <mat-hint align="end">{{ lastName.length }}/100</mat-hint>
       <mat-error *ngIf="lastNameControl.hasError('required')">
-        Прізвище обов'язкове для введення
+        You must enter a value
       </mat-error>
     </mat-form-field>
 
@@ -54,17 +54,17 @@
       <mat-label>Tags</mat-label>
       <mat-chip-grid #chipGrid aria-label="Enter tags">
         @for (tag of tags(); track tag) {
-        <mat-chip-row
-          (removed)="remove(tag)"
-          [editable]="true"
-          (edited)="edit(tag, $event)"
-          [aria-description]="'press enter to edit ' + tag.name"
-        >
-          {{ tag.name }}
-          <button matChipRemove [attr.aria-label]="'remove ' + tag.name">
-            <mat-icon>cancel</mat-icon>
-          </button>
-        </mat-chip-row>
+          <mat-chip-row
+            (removed)="remove(tag)"
+            [editable]="true"
+            (edited)="edit(tag, $event)"
+            [aria-description]="'press enter to edit ' + tag.name"
+          >
+            {{ tag.name }}
+            <button matChipRemove [attr.aria-label]="'remove ' + tag.name">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
         }
         <input
           placeholder="New tag..."

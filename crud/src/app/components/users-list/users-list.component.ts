@@ -38,7 +38,7 @@ export class MyCustomPaginatorIntl implements MatPaginatorIntl {
 export class UsersListComponent implements OnInit {
   users: User[] = [];
   paginatedUsers: User[] = [];
-  pageSize = 5;
+  pageSize = 10;
   pageIndex = 0;
 
   constructor(private userService: UserService) {}
