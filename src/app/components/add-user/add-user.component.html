@@ -1,6 +1,6 @@
-<div class="mat-create-list">
+<div class="mat-list">
   <div class="mat-create-title">
-    <h1>Create user</h1>
+    <h2>Create user</h2>
   </div>
   <div class="mat-create-content">
     <mat-form-field>
@@ -35,7 +35,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field>
       <mat-label>Email</mat-label>
       <input
         matInput
@@ -48,6 +48,45 @@
       />
       <mat-hint align="end">{{ currentLength }}/100</mat-hint>
       <mat-error *ngIf="email.invalid">{{ errorMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Birth Date</mat-label>
+      <input
+        matInput
+        placeholder="Enter birth date"
+        [formControl]="birthDateControl"
+        [(ngModel)]="birthDate"
+        type="date"
+      />
+      <mat-error *ngIf="birthDateControl.hasError('required')">
+        You must enter a birth date
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input
+        matInput
+        placeholder="Enter phone number"
+        [formControl]="phoneNumberControl"
+        [(ngModel)]="phoneNumber"
+        maxlength="15"
+      />
+      <mat-error *ngIf="phoneNumberControl.hasError('required')">
+        You must enter a phone number
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input
+        matInput
+        placeholder="Enter address"
+        [(ngModel)]="address"
+        maxlength="200"
+      />
+      <mat-hint align="end">{{ address.length }}/200</mat-hint>
     </mat-form-field>
 
     <mat-form-field class="example-chip-list" appearance="outline">
@@ -97,7 +136,11 @@
       mat-raised-button
       class="creaButt"
       [disabled]="
-        firstNameControl.invalid || lastNameControl.invalid || email.invalid
+        firstNameControl.invalid ||
+        lastNameControl.invalid ||
+        email.invalid ||
+        birthDateControl.invalid ||
+        phoneNumberControl.invalid
       "
       (click)="createUser()"
     >

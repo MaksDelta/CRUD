@@ -1,4 +1,5 @@
 <div class="title-criterion">
+  <div class="mat-index position">{{ index }}</div>
   <div class="user-field positions">
     {{ user.firstName }}
   </div>
@@ -6,35 +7,17 @@
     {{ user.lastName }}
   </div>
   <div class="user-field positions">
-    {{ getFormattedDate(user.createdAt) }}
-  </div>
-  <div class="user-field positions">
-    {{ user.email }}
-  </div>
-  <div class="position">
-    <span *ngFor="let tag of user.tags; let i = index">
-      {{ tag }}<ng-container *ngIf="i < user.tags.length - 1">, </ng-container>
-    </span>
-  </div>
-  <div class="position">
-    {{ user.description }}
+    {{ user.phoneNumber }}
   </div>
   <div class="mat-actions">
     <button
       mat-fab
       class="edit-button"
       aria-label="Edit"
-      (click)="openEditUserForm()"
+      (click)="openPersonalInformation(user)"
     >
-      <mat-icon>edit</mat-icon>
-    </button>
-    <button
-      mat-fab
-      class="edit-button"
-      aria-label="Delete"
-      (click)="openDeleteDialog(user)"
-    >
-      <mat-icon>delete</mat-icon>
+      <mat-icon>storage</mat-icon>
+      More info
     </button>
   </div>
 </div>

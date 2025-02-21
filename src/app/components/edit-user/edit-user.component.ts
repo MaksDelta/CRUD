@@ -53,6 +53,9 @@ export class EditUserComponent implements OnInit {
   readonly firstNameControl = new FormControl('', [Validators.required]);
   readonly lastNameControl = new FormControl('', [Validators.required]);
   readonly descriptionControl = new FormControl('');
+  readonly birthDateControl = new FormControl('', [Validators.required]);
+  readonly phoneNumberControl = new FormControl('', [Validators.required]);
+  readonly addressControl = new FormControl('', [Validators.required]);
 
   user: User | null = null;
 
@@ -172,6 +175,9 @@ export class EditUserComponent implements OnInit {
     this.firstNameControl.setValue(user.firstName);
     this.lastNameControl.setValue(user.lastName);
     this.descriptionControl.setValue(user.description);
+    this.birthDateControl.setValue(user.birthDate);
+    this.phoneNumberControl.setValue(user.phoneNumber);
+    this.addressControl.setValue(user.address);
     this.tags.set(user.tags.map((tag) => ({ name: tag })));
     this.firstName = user.firstName;
     this.lastName = user.lastName;
@@ -185,7 +191,10 @@ export class EditUserComponent implements OnInit {
     if (
       this.firstNameControl.invalid ||
       this.lastNameControl.invalid ||
-      this.email.invalid
+      this.email.invalid ||
+      this.birthDateControl.invalid ||
+      this.phoneNumberControl.invalid ||
+      this.addressControl.invalid
     ) {
       return;
     }
@@ -195,13 +204,16 @@ export class EditUserComponent implements OnInit {
       lastName: this.lastNameControl.value!,
       email: this.email.value!,
       description: this.descriptionControl.value!,
+      birthDate: this.birthDateControl.value!,
+      phoneNumber: this.phoneNumberControl.value!,
+      address: this.addressControl.value!,
       tags: this.tags().map((tag) => tag.name),
       createdAt: this.user?.createdAt ?? '',
     };
 
     this.userService.updateUser(updatedUser).subscribe({
       next: (user) => {
-        this.dialogRef.close(user);
+        this.dialogRef.close(updatedUser);
       },
       error: (err) => {
         this.errorMessage.set('Error saving user');

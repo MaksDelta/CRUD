@@ -3,10 +3,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
-import { EditUserComponent } from '../edit-user/edit-user.component';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { UserService, User } from '../../services/user.service';
+import { PersonalInformationComponent } from '../personal-information/personal-information.component';
 
 @Component({
   selector: 'app-user-info',
@@ -23,6 +23,7 @@ import { UserService, User } from '../../services/user.service';
   providers: [DatePipe],
 })
 export class UserInfoComponent {
+  @Input() index!: number;
   @Input() user!: User;
 
   constructor(
@@ -35,9 +36,9 @@ export class UserInfoComponent {
     return this.datePipe.transform(createdAt, 'dd MMMM yyyy, HH:mm')!;
   }
 
-  openEditUserForm() {
-    this._dialog.open(EditUserComponent, {
-      data: { user: this.user },
+  openPersonalInformation(user: User): void {
+    const dialogRef = this._dialog.open(PersonalInformationComponent, {
+      data: user,
     });
   }
 

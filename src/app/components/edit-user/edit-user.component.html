@@ -1,6 +1,6 @@
-<div class="mat-create-list">
+<div class="mat-list">
   <div class="mat-create-title">
-    <h1>Create user</h1>
+    <h2>Edit user</h2>
   </div>
   <div class="mat-create-content">
     <mat-form-field>
@@ -31,7 +31,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field>
       <mat-label>Email</mat-label>
       <input
         matInput
@@ -44,6 +44,21 @@
       />
       <mat-hint align="end">{{ currentLength.email }}/100</mat-hint>
       <mat-error *ngIf="email.invalid">{{ errorMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Birth Date</mat-label>
+      <input matInput [formControl]="birthDateControl" type="date" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input matInput [formControl]="phoneNumberControl" maxlength="15" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input matInput [formControl]="addressControl" maxlength="200" />
     </mat-form-field>
 
     <mat-form-field class="example-chip-list" appearance="outline">

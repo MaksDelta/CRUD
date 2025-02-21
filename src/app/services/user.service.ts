@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 export interface User {
   firstName: string;
   lastName: string;
-  createdAt: string;
+  birthDate: string;
   email: string;
+  phoneNumber: string;
+  address: string;
   tags: string[];
   description: string;
+  createdAt: string;
 }
 
 @Injectable({
@@ -48,7 +52,10 @@ export class UserService {
       user.email === updatedUser.email ? updatedUser : user
     );
     this.usersSubject.next(updatedUsers);
-    return this.http.put<User>(this.jsonUrl, updatedUser);
+
+    return this.http.put<User>(this.jsonUrl, updatedUser).pipe(
+      tap(() => this.usersSubject.next(updatedUsers)) // Оновлює після запиту
+    );
   }
 
   deleteUser(userEmail: string): void {

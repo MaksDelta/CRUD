@@ -1,0 +1,46 @@
+<div class="mat-list">
+  <div class="buner">
+    <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+  </div>
+  <div class="content">
+    <div class="name">Email:</div>
+    <div>{{ user.email }}</div>
+
+    <div class="name">Phone:</div>
+    <div>{{ user.phoneNumber }}</div>
+
+    <div class="name">Birth Date:</div>
+    <div>{{ datePipe.transform(user.birthDate, 'dd MMMM yyyy') }}</div>
+
+    <div class="name">Address:</div>
+    <div>{{ user.address }}</div>
+
+    <div class="name">Tags:</div>
+    <div>{{ user.tags.join(', ') }}</div>
+
+    <div class="name">Description:</div>
+    <div>{{ user.description }}</div>
+
+    <div class="name">Created At:</div>
+    <div>{{ datePipe.transform(user.createdAt, 'dd MMMM yyyy, HH:mm') }}</div>
+  </div>
+
+  <div class="action">
+    <button
+      mat-fab
+      class="edit-button"
+      aria-label="Edit"
+      (click)="openEditUserForm()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      mat-fab
+      class="edit-button"
+      aria-label="Delete"
+      (click)="openDeleteDialog(user)"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>

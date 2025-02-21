@@ -1,22 +1,30 @@
 <div class="mat-all-users">
   <div class="title-criterion">
+    <div class="mat-index position">#</div>
     <div class="mat-first-name position">First name</div>
     <div class="mat-last-name position">Last name</div>
-    <div class="mat-create-at position">Created at</div>
-    <div class="mat-email position">Email</div>
-    <div class="mat-tags position">Tags</div>
-    <div class="mat-description position">Description</div>
+    <div class="mat-phone-number position">Phone Number</div>
+    <div class="mat-search">
+      <input
+        type="text"
+        placeholder="Search user by name"
+        [(ngModel)]="searchTerm"
+        (input)="filterUsers()"
+        class="search-input"
+      />
+    </div>
   </div>
 
   <app-user-info
-    *ngFor="let user of paginatedUsers"
+    *ngFor="let user of paginatedUsers; let i = index"
     [user]="user"
+    [index]="i + 1"
   ></app-user-info>
 </div>
 
 <div class="mat-actions-users">
   <mat-paginator
-    [length]="users.length"
+    [length]="filteredUsers.length"
     [pageSize]="pageSize"
     [pageSizeOptions]="[5, 10, 20]"
     (page)="onPageChange($event)"

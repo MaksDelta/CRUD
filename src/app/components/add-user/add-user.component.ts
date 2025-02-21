@@ -52,11 +52,16 @@ export class AddUserComponent {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   readonly firstNameControl = new FormControl('', [Validators.required]);
   readonly lastNameControl = new FormControl('', [Validators.required]);
+  readonly birthDateControl = new FormControl('', [Validators.required]);
+  readonly phoneNumberControl = new FormControl('', [Validators.required]);
 
   currentLength: number = 0;
   firstName: string = '';
   lastName: string = '';
   description: string = '';
+  birthDate: string = '';
+  phoneNumber: string = '';
+  address: string = '';
   tagsArray: string[] = [];
 
   errorMessage = signal('');
@@ -168,6 +173,9 @@ export class AddUserComponent {
       email: this.email.value!,
       tags: this.tagsArray,
       description: this.description,
+      birthDate: this.birthDate,
+      phoneNumber: this.phoneNumber,
+      address: this.address,
     };
 
     this.userService.addUser(newUser).subscribe({
